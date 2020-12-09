@@ -1,4 +1,14 @@
-let sprMain = sprites.create(img`
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile8, function (sprite, location) {
+    tiles.placeOnRandomTile(sprMain, myTiles.tile7)
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile7, function (sprite, location) {
+    tiles.placeOnRandomTile(sprMain, myTiles.tile8)
+})
+scene.onOverlapTile(SpriteKind.Player, myTiles.tile6, function (sprite, location) {
+    tiles.placeOnRandomTile(sprMain, myTiles.tile5)
+})
+let sprMain: Sprite = null
+sprMain = sprites.create(img`
     . . . . f f f f f . . . . . . . 
     . . . f e e e e e f . . . . . . 
     . . f d d d d e e e f . . . . . 
@@ -16,3 +26,25 @@ let sprMain = sprites.create(img`
     . . . f d d c d d b b d f . . . 
     . . . . f f f f f f f f f . . . 
     `, SpriteKind.Player)
+scene.setBackgroundColor(11)
+tiles.setTilemap(tiles.createTilemap(hex`1000100001010101010101010501010101010101010101010101010100010101010101010200000000000001000000000000000101010101010100010001010101010101010101010101000100010101010101010101010101010001000101010101010101010101010100010001010101010101010101010101000100010101010101010400000101010001000101010100000301010000000000010000000000000101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010100010101010101010101010101010101000101010101010101010101010101010601010101010101`, img`
+    . . . . . . . 2 . 2 2 . . . . . 
+    2 2 2 2 2 2 2 2 . 2 2 2 2 2 2 2 
+    . . . . . . . 2 . . . . . . . . 
+    2 2 2 2 2 2 . 2 . 2 2 2 2 2 2 2 
+    . . . . . 2 . 2 . 2 . . . . . . 
+    . . . . . 2 . 2 . 2 . . . . . . 
+    . . . . . 2 . 2 . 2 . . . . . . 
+    2 2 2 2 . 2 . 2 . 2 . . 2 2 2 2 
+    . . . 2 2 2 . 2 . 2 2 2 2 . . . 
+    2 2 . . . . . 2 . . . . . . 2 2 
+    . 2 2 2 2 2 2 2 2 2 2 2 2 2 2 . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . 2 2 2 . . . . . . 
+    . . . . . . . 2 . 2 . . . . . . 
+    . . . . . . . 2 . 2 . . . . . . 
+    . . . . . . . 2 . 2 . . . . . . 
+    `, [myTiles.transparency16,myTiles.tile1,myTiles.tile2,myTiles.tile5,myTiles.tile6,myTiles.tile7,myTiles.tile8], TileScale.Sixteen))
+tiles.placeOnRandomTile(sprMain, myTiles.tile2)
+controller.moveSprite(sprMain, 100, 100)
+scene.cameraFollowSprite(sprMain)
