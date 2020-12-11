@@ -1,5 +1,5 @@
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile8, function (sprite, location) {
-    tiles.placeOnRandomTile(sprMain, myTiles.tile7)
+    tiles.placeOnRandomTile(sprMain, sprites.dungeon.hazardLava0)
     game.over(false)
 })
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile7, function (sprite, location) {
@@ -7,6 +7,9 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile7, function (sprite, location
 })
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile6, function (sprite, location) {
     tiles.placeOnRandomTile(sprMain, myTiles.tile5)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.collectibleRedCrystal, function (sprite, location) {
+    game.over(true)
 })
 let sprMain: Sprite = null
 sprMain = sprites.create(img`
@@ -28,7 +31,7 @@ sprMain = sprites.create(img`
     . . . . f f f f f f f f f . . . 
     `, SpriteKind.Player)
 scene.setBackgroundColor(11)
-tiles.setTilemap(tiles.createTilemap(hex`1000100007070707070707070507070707070707070707070707070700070707070707070100000000000007000000000000000807070707070700070007070707070707070707070707000700070707070707070707070707070007000707070707070707070707070700070007070707070707070707070707000700070707070707070400000707070007000707070700000307070000000000070000000000000707070707070707070707070707070707070707070707070707070707070707070707070707070707070707070707070707070707070707070700070707070707070707070707070707000707070707070707070707070707070607070707070707`, img`
+tiles.setTilemap(tiles.createTilemap(hex`1000100007070707070707070507070707070707070707070707070700070707070707070100000000000007000000000000000807070707070700070007070707070707070707070707000700070707070707070707070707070007000707070707070707070707070700070007070707070707070707070707000700070707070707070400000707070007000707070700000307070000000000070000000000000707070707070707070707070707070707070707070707070707070707070707070707070707070707070707070707070707070707070707070700070707070707070707070707070707090707070707070707070707070707070607070707070707`, img`
     . . . . . . . 2 . 2 2 . . . . . 
     2 2 2 2 2 2 2 2 . 2 2 2 2 2 2 2 
     . . . . . . . 2 . . . . . . . . 
@@ -45,7 +48,7 @@ tiles.setTilemap(tiles.createTilemap(hex`100010000707070707070707050707070707070
     . . . . . . . 2 . 2 . . . . . . 
     . . . . . . . 2 . 2 . . . . . . 
     . . . . . . . 2 . 2 . . . . . . 
-    `, [myTiles.transparency16,myTiles.tile2,myTiles.tile2,myTiles.tile5,myTiles.tile6,myTiles.tile7,myTiles.tile8,sprites.dungeon.darkGroundCenter,sprites.dungeon.collectibleRedCrystal], TileScale.Sixteen))
+    `, [myTiles.transparency16,myTiles.tile2,myTiles.tile2,myTiles.tile5,myTiles.tile6,myTiles.tile7,myTiles.tile8,sprites.dungeon.darkGroundCenter,sprites.dungeon.collectibleRedCrystal,sprites.dungeon.hazardLava0], TileScale.Sixteen))
 tiles.placeOnRandomTile(sprMain, myTiles.tile2)
 controller.moveSprite(sprMain, 100, 100)
 scene.cameraFollowSprite(sprMain)
